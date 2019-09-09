@@ -95,6 +95,7 @@ def authz_cb(request):
 
 
 def logout(request, next_page=None):
+    next_page = '/evenementen'
     if not "op" in request.session.keys():
         return auth_logout_view(request, next_page)
 
