@@ -86,9 +86,9 @@ def authz_cb(request):
         user = authenticate(request=request, **userinfo)
         if user:
             login(request, user)
-            return redirect(request.session["next"])
+            return redirect('/evenementen')
         else:
-            return redirect('/not-authorized')
+            return redirect('/evenementen/accounts/not-authorized')
     except OIDCError as e:
         logging.getLogger('djangooidc.views.authz_cb').exception('Problem logging user in')
         return render(request, ERROR_TEMPLATE, context={"error": e, "callback": query})
